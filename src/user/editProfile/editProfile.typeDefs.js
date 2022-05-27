@@ -12,7 +12,7 @@ export default gql`
       username: String
       password: String
       location: String
-      avatarURL: String
+      avatarURL: Upload
       githubUsername: String
     ): EditProfileResult!
   }

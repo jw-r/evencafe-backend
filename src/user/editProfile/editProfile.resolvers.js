@@ -1,5 +1,6 @@
 import { hash } from "bcrypt";
 import client from "../../client";
+import { deleteFromS3, uploadToS3 } from "../../shared/shared.utils";
 import { checkExisting, protectResolver } from "../../utils";
 
 export default {
@@ -35,6 +36,24 @@ export default {
           if (password) {
             hashedPassword = await hash(newPassword, 10);
           }
+          // AWS 아바타 업로드
+          let newAvatarUrl = null;
+          if (avatarURL) {
+            const pre_avatarURL = await client.user.findUnique({
+              where: {
+                id: loggedInUser.id,
+              },
+              select: { avatarURL: true },
+            });
+            if (pre_avatarURL) {
+              await deleteFromS3(pre_avatarURL.avatarURL, "avatars");
+            }
+            newAvatarUrl = await uploadToS3(
+              avatarURL,
+              loggedInUser.id,
+              "avatars"
+            );
+          }
           // 업데이트
           const updatedUser = await client.user.update({
             where: { id: loggedInUser.id },
@@ -42,6 +61,9 @@ export default {
               email,
               name,
               username,
+              location,
+              githubUsername,
+              ...(newAvatarUrl && { avatarURL: newAvatarUrl }),
               ...(hashedPassword && { password: hashedPassword }),
             },
           });
