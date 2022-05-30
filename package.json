@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node src/server.js",
     "migrate": "npx prisma migrate dev",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "babel src --out-dir build",
+    "start": "node build/server"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/evencoding/evencafe-backend#readme",
   "dependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.18.2",
     "@graphql-tools/load-files": "^6.5.3",
     "@graphql-tools/merge": "^8.2.10",
     "@graphql-tools/schema": "^8.3.10",
