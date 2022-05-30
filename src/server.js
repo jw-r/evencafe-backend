@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 4400;
     typeDefs,
     resolvers,
     playground: true,
+    introspection: true,
     context: async ({ req }) => {
       return {
         loggedInUser: await getUser(req.headers.token),
