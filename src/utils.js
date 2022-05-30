@@ -32,6 +32,10 @@ export const getUser = async (token) => {
 
 export const protectResolver = (resolver) => (root, args, context, info) => {
   if (!context.loggedInUser) {
+    const query = info.operation.operation === "query";
+    if (query) {
+      return null;
+    }
     return {
       ok: false,
       error: "로그인 해 주쎄용!",

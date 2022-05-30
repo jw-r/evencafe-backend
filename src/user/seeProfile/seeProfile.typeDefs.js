@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   type SeeProfileResult {
-    ok: User
+    user: User
     error: String
   }
   type Query {

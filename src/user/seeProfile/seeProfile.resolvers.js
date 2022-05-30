@@ -6,10 +6,10 @@ export default {
   Query: {
     seeProfile: async (_, { id, username }) => {
       if (id) {
-        const user = await client.user.findUnique({ where: { arg } });
+        const user = await client.user.findUnique({ where: { id } });
         if (user) {
           return {
-            ok: user,
+            user,
           };
         } else {
           return {
@@ -20,7 +20,7 @@ export default {
         const user = await client.user.findUnique({ where: { username } });
         if (user) {
           return {
-            ok: user,
+            user,
           };
         } else {
           return {

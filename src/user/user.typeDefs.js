@@ -1,6 +1,11 @@
 import { gql } from "apollo-server";
 
 export default gql`
+  type FollowResult {
+    ok: Boolean!
+    error: String
+    result: [User]
+  }
   type User {
     id: Int!
     email: String!
@@ -9,5 +14,9 @@ export default gql`
     location: String
     avatarURL: String
     githubUsername: String
+    totalFollowing: Int!
+    totalFollowers: Int!
+    followers(username: String!, lastId: Int): FollowResult!
+    following(username: String!, lastId: Int): FollowResult!
   }
 `;
