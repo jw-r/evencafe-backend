@@ -18,5 +18,7 @@ export default gql`
     totalFollowers: Int!
     followers(username: String!, lastId: Int): FollowResult!
     following(username: String!, lastId: Int): FollowResult!
+    createdAt: String!
+    updatedAt: String!
   }
 `;

@@ -44,3 +44,14 @@ export const protectResolver = (resolver) => (root, args, context, info) => {
     return resolver(root, args, context, info);
   }
 };
+
+export const processCategories = (category) => {
+  const categories = category.match(/#[ㄱ-ㅎ|가-힣|a-z|A-Z|]+/g) || [];
+  return categories.map((ca) => ({
+    where: { name: ca },
+    create: {
+      name: ca,
+      slug: ca,
+    },
+  }));
+};
