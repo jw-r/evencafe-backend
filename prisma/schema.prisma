@@ -10,8 +10,8 @@ datasource db {
 model User {
   id             Int          @id @default(autoincrement())
   email          String       @unique
-  name           String
   username       String       @unique
+  name           String
   password       String
   location       String?
   avatarURL      String?
@@ -19,6 +19,7 @@ model User {
   followers      User[]       @relation("FollowRelation", references: [id])
   following      User[]       @relation("FollowRelation", references: [id])
   shops          CoffeeShop[]
+  followingShops CoffeeShop[] @relation("FollowingShops", references: [id])
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
 }
@@ -29,7 +30,8 @@ model CoffeeShop {
   latitude   String?
   longitude  String?
   avatar     String?
-  user       User              @relation(fields: [userId], references: [id])
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  followers  User[]            @relation("FollowingShops", references: [id])
   userId     Int
   photos     CoffeeShopPhoto[]
   categories Category[]
@@ -49,7 +51,7 @@ model Category {
 model CoffeeShopPhoto {
   id        Int        @id @default(autoincrement())
   url       String
-  shop      CoffeeShop @relation(fields: [shopId], references: [id])
+  shop      CoffeeShop @relation(fields: [shopId], references: [id], onDelete: Cascade)
   shopId    Int
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
