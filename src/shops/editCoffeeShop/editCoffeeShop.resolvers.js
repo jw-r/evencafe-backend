@@ -7,7 +7,7 @@ export default {
     editCoffeeShop: protectResolver(
       async (
         _,
-        { id, name, latitude, longitude, avatar, categories },
+        { id, name, latitude, longitude, avatar, categories, adress, bio },
         { loggedInUser }
       ) => {
         try {
@@ -70,6 +70,8 @@ export default {
               name,
               latitude,
               longitude,
+              adress,
+              bio,
               ...(avatar && { avatar: avatarUrl }),
               ...(categoryObjs.length > 0 && {
                 categories: {

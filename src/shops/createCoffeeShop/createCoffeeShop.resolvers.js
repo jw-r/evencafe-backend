@@ -7,7 +7,7 @@ export default {
     createCoffeeShop: protectResolver(
       async (
         _,
-        { name, latitude, longitude, avatar, categories },
+        { name, latitude, longitude, avatar, categories, adress, bio },
         { loggedInUser }
       ) => {
         try {
@@ -37,6 +37,7 @@ export default {
               name,
               latitude,
               longitude,
+              adress,
               avatar: avatarUrl,
               user: {
                 connect: {

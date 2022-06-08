@@ -2,7 +2,8 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   type SeeCategoryResult {
-    totalPages: Int!
+    totalPages: Int
+    totalShops: Int
     shops: [CoffeeShop]
   }
   type Query {

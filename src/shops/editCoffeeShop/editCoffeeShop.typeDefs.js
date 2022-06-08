@@ -4,6 +4,8 @@ export default gql`
   type Mutation {
     editCoffeeShop(
       id: Int!
+      bio: String
+      adress: String
       name: String
       latitude: String
       longitude: String

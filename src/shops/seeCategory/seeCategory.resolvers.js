@@ -3,7 +3,7 @@ import client from "../../client";
 export default {
   Query: {
     seeCategory: async (_, { name, page }) => {
-      const TAKE = 15;
+      const TAKE = 30;
       const totalShops = await client.coffeeShop.count({
         where: { categories: { some: { name } } },
       });
@@ -13,12 +13,20 @@ export default {
         };
       }
       const shops = await client.coffeeShop.findMany({
-        where: { categories: { some: { name } } },
+        where: {
+          categories: {
+            some: {
+              name,
+            },
+          },
+        },
+        include: { user: true, photos: true },
         take: TAKE,
         skip: (page - 1) * TAKE,
       });
       return {
         shops,
+        totalShops,
         totalPages: Math.ceil(totalShops / TAKE),
       };
     },

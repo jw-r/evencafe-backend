@@ -16,6 +16,7 @@ export default {
       });
       return {
         totalPages: Math.ceil(totalCategories / TAKE),
+        totalCategories,
         categories,
       };
     },

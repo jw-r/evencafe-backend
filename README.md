@@ -1,5 +1,25 @@
 # evencafe-backend
 
+## 따로 구현한 것
+
+- createCoffeeShop, editCoffeeShop, uploadPhoto, deletePhoto, editProfile
+  Upload Photo / Delete Photo
+  AWS 연동으로 삭제 시 AWS에서도 삭제 되도록 했음
+
+- Search Shop
+
+- followCoffeeShop, unfollowCoffeeShop
+
+- file path
+  유저 Avatar /avatars
+  카페
+  Avatar shops/{name}/avatar
+  Photo shops/{name}/photo
+
+- Category
+  카테고리 수정 시, 이미 연결되어 있던 모든 카테고리와 연결을 끊고, 새로운 카테고리와 연결
+  업데이트 후, 카테고리에 해당하는 카페가 존재하지 않다면 해당 카테고리 삭제
+
 ## User Resolver
 
 - createAccount (email! name! username! password!)
@@ -67,7 +87,7 @@
   해당 id의 Coffee Shop을 find 후, 반환 (include photos, categories, user)
 - seeCoffeeShops (page!)
   DB의 모든 Coffee Shops 을 반환 (cursor pagination 을 이용해 10개씩 반환, totalShops, totalPages 반환)
-- seeCategoreis (page!)
+- seeCategories (page!)
   DB의 모든 카테고리 반환 (cursor pagination 을 이용해 15개씩 반환, totalCategories, totalPages 반환)
 - seeCategory (name! page!)
   해당 name 의 카테고리를 가진 Coffee Shops 을 모두 반환 (cursor pagination 을 이용해 15개 씩 반환, totalShops, totalPages 반환)
@@ -77,21 +97,3 @@
 - 유저가 카페를 팔로워 할 수 있도록. ✅
 - 유저 프로필에 팔로우한 카페가 보이도록 (cursor based pagination)
 - 카페 모델에 adress 추가
-
-## 따로 구현한 것
-
-- createCoffeeShop, editCoffeeShop, uploadPhoto, deletePhoto, editProfile
-  Upload Photo / Delete Photo
-  AWS 연동으로 삭제 시 AWS에서도 삭제 되도록 했음
-
-- followCoffeeShop, unfollowCoffeeShop
-
-유저 Avatar /avatars
-
-카페
-Avatar shops/{name}/avatar
-Photo shops/{name}/photo
-
-- Category
-  카테고리 수정 시, 이미 연결되어 있던 모든 카테고리와 연결을 끊고, 새로운 카테고리와 연결
-  업데이트 후, 카테고리에 해당하는 카페가 존재하지 않다면 해당 카테고리 삭제

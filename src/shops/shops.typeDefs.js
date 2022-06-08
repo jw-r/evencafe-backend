@@ -6,8 +6,11 @@ export default gql`
     name: String!
     latitude: String
     longitude: String
+    bio: String
+    adress: String
     user: User!
     avatar: String
+    followers: Int!
     photos: [CoffeeShopPhoto]
     categories: [Category]
     createdAt: String!

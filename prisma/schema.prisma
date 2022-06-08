@@ -29,7 +29,9 @@ model CoffeeShop {
   name       String            @unique
   latitude   String?
   longitude  String?
+  bio        String?
   avatar     String?
+  adress     String?
   user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   followers  User[]            @relation("FollowingShops", references: [id])
   userId     Int
