@@ -8,7 +8,7 @@ AWS.config.update({
 });
 
 export const uploadToS3 = async (file, userId, folderName) => {
-  const { filename, createReadStream } = await file;
+  const { filename, createReadStream, mimetype } = await file;
   const readStream = createReadStream();
   const objectName = `${folderName}/${userId}-${Date.now()}-${filename}`;
   const { Location } = await new AWS.S3()
@@ -17,6 +17,7 @@ export const uploadToS3 = async (file, userId, folderName) => {
       Key: objectName,
       ACL: "public-read",
       Body: readStream,
+      ContentType: mimetype,
     })
     .promise();
   return Location;

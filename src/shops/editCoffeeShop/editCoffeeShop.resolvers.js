@@ -87,6 +87,7 @@ export default {
           });
           if (updatedShop) {
             return {
+              id: updatedShop.id,
               ok: true,
             };
           }

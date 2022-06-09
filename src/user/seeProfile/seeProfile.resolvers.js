@@ -6,7 +6,10 @@ export default {
   Query: {
     seeProfile: async (_, { id, username }) => {
       if (id) {
-        const user = await client.user.findUnique({ where: { id } });
+        const user = await client.user.findUnique({
+          where: { id },
+          include: { shops: { include: { user: true, categories: true } } },
+        });
         if (user) {
           return {
             user,
@@ -17,7 +20,10 @@ export default {
           };
         }
       } else if (username) {
-        const user = await client.user.findUnique({ where: { username } });
+        const user = await client.user.findUnique({
+          where: { username },
+          include: { shops: { include: { user: true, categories: true } } },
+        });
         if (user) {
           return {
             user,

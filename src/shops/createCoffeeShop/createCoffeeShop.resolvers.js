@@ -38,6 +38,7 @@ export default {
               latitude,
               longitude,
               adress,
+              bio,
               avatar: avatarUrl,
               user: {
                 connect: {
@@ -54,6 +55,7 @@ export default {
           if (newShop) {
             return {
               ok: true,
+              id: newShop.id,
             };
           }
         } catch (e) {
