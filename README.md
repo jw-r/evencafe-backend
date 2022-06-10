@@ -96,4 +96,4 @@
 
 - 유저가 카페를 팔로워 할 수 있도록. ✅
 - 유저 프로필에 팔로우한 카페가 보이도록 (cursor based pagination)
-- 카페 모델에 adress 추가
+- 카페 모델에 adress 추가 ✅
