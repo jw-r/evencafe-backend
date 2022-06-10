@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "dev": "nodemon --exec babel-node src/server.js",
@@ -39,7 +43,6 @@
     "fs-capacitor": "6.2.0",
     "graphql": "^15.8.0",
     "jsonwebtoken": "^8.5.1",
-    "graphql-upload": "^11.0.0",
     "@babel/core": "^7.16.10",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.10",
@@ -54,7 +57,6 @@
     "prisma": "^3.14.0"
   },
   "resolutions": {
-    "fs-capacitor": "6.2.0",
-    "graphql-upload": "^11.0.0"
+    "fs-capacitor": "6.2.0"
   }
 }
