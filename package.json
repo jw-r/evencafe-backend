@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.12.x"
+  },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "dev": "nodemon --exec babel-node src/server.js",
@@ -47,6 +51,6 @@
   },
   "resolutions": {
     "fs-capacitor": "6.2.0",
-    "graphql-upload": "^11.0"
+    "graphql-upload": "^11.0.0"
   }
 }
