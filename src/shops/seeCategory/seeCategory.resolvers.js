@@ -20,7 +20,7 @@ export default {
             },
           },
         },
-        include: { user: true, photos: true },
+        include: { user: true, photos: true, categories: true },
         take: TAKE,
         skip: (page - 1) * TAKE,
       });
