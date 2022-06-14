@@ -67,7 +67,7 @@ export default {
               ...(hashedPassword && { password: hashedPassword }),
             },
           });
-          if (updatedUser.id) {
+          if (updatedUser?.id) {
             return {
               ok: true,
             };
@@ -77,7 +77,8 @@ export default {
               error: "프로필 정보를 업데이트하는데 실패했습니다 ㄷ.ㄷ",
             };
           }
-        } catch {
+        } catch (e) {
+          console.log(e);
           return {
             ok: false,
             error: "뭔가 잘못된거 같은데요!?",

@@ -17,6 +17,7 @@ export default gql`
     totalFollowing: Int!
     totalFollowers: Int!
     shops: [CoffeeShop]
+    followingShops: [CoffeeShop]
     followers(username: String!, lastId: Int): FollowResult!
     following(username: String!, lastId: Int): FollowResult!
     createdAt: String!

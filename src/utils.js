@@ -1,7 +1,10 @@
 import { verify } from "jsonwebtoken";
 import client from "./client";
 
-export const checkExisting = async (email = null, username = null) => {
+export const checkExisting = async (
+  email = undefined,
+  username = undefined
+) => {
   const existingUser = await client.user.findFirst({
     where: {
       OR: [{ email }, { username }],

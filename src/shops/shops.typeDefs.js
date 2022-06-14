@@ -15,6 +15,7 @@ export default gql`
     categories: [Category]
     createdAt: String!
     updatedAt: String!
+    isFollowing: Boolean!
   }
   type CoffeeShopPhoto {
     id: Int!

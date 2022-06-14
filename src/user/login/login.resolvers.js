@@ -1,5 +1,4 @@
 import { compare } from "bcrypt";
-import { isRequiredArgument } from "graphql";
 import { sign } from "jsonwebtoken";
 import client from "../../client";
 

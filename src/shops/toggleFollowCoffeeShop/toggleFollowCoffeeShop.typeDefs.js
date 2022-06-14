@@ -2,6 +2,6 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   type Mutation {
-    followCoffeeShop(name: String!): MutationResponse!
+    toggleFollowCoffeeShop(name: String!): MutationResponse!
   }
 `;
