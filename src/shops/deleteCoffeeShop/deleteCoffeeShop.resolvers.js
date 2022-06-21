@@ -34,6 +34,10 @@ export default {
         });
       }
       await client.coffeeShop.delete({ where: { id } });
+      // 카테고리에 속한 커피숍이 0개라면 해당 카테고리 삭제
+      await client.category.deleteMany({
+        where: { shops: { none: {} } },
+      });
       return {
         ok: true,
       };
