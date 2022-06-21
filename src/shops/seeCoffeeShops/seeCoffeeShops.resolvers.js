@@ -2,26 +2,26 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeCoffeeShops: async (_, { page }) => {
-      const TAKE = 10;
-      const totalShops = await client.coffeeShop.count();
-      if (page < 1) {
-        return {
-          totalPages: Math.ceil(totalShops / TAKE),
-        };
-      }
+    seeCoffeeShops: async (_, { offset }) => {
+      const TAKE = 20;
+      // const totalShops = await client.coffeeShop.count();
+      // if (page < 1) {
+      //   return {
+      //     totalPages: Math.ceil(totalShops / TAKE),
+      //   };
+      // }
       const shops = await client.coffeeShop.findMany({
         take: TAKE,
-        skip: (page - 1) * TAKE,
+        skip: offset,
         include: {
           user: true,
           categories: true,
         },
+        orderBy: {
+          createdAt: "desc",
+        },
       });
-      return {
-        shops,
-        totalPages: Math.ceil(totalShops / TAKE),
-      };
+      return shops;
     },
   },
 };

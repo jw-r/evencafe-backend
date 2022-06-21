@@ -6,6 +6,7 @@ export default gql`
     totalPages: Int!
   }
   type Query {
-    seeCoffeeShops(page: Int!): SeeCoffeeShopsResult!
+    # seeCoffeeShops(offset: Int!): SeeCoffeeShopsResult!
+    seeCoffeeShops(offset: Int!): [CoffeeShop]
   }
 `;
