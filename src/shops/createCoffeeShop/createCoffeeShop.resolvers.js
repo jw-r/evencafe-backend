@@ -11,6 +11,8 @@ export default {
         { loggedInUser }
       ) => {
         try {
+          console.log(name);
+          console.log(avatar);
           const existingShop = await client.coffeeShop.findFirst({
             where: { name },
           });

@@ -12,6 +12,7 @@ export default {
         include: {
           user: true,
           photos: true,
+          categories: true,
         },
       }),
   },

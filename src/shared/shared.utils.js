@@ -20,6 +20,7 @@ export const uploadToS3 = async (file, userId, folderName) => {
       ContentType: mimetype,
     })
     .promise();
+  console.log(Location);
   return Location;
 };
 

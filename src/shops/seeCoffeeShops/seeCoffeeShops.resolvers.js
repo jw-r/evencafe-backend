@@ -3,7 +3,7 @@ import client from "../../client";
 export default {
   Query: {
     seeCoffeeShops: async (_, { offset }) => {
-      const TAKE = 20;
+      const TAKE = 30;
       // const totalShops = await client.coffeeShop.count();
       // if (page < 1) {
       //   return {
