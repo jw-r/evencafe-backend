@@ -9,8 +9,9 @@ export default {
         })
         .Comment({
           orderBy: {
-            createdAt: "asc",
+            createdAt: "desc",
           },
+          include: { user: true },
         }),
   },
 };
