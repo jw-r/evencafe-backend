@@ -16,10 +16,8 @@ model User {
   location       String?
   avatarURL      String?
   githubUsername String?
-  followers      User[]       @relation("FollowRelation", references: [id], onDelete: Cascade)
-  following      User[]       @relation("FollowRelation", references: [id], onDelete: Cascade)
   shops          CoffeeShop[]
-  followingShops CoffeeShop[] @relation("FollowingShops", references: [id], onDelete: Cascade)
+  followingShops CoffeeShop[] @relation("FollowingShops")
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
   Comment        Comment[]
@@ -34,7 +32,7 @@ model CoffeeShop {
   avatar     String?
   adress     String?
   user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  followers  User[]            @relation("FollowingShops", references: [id], onDelete: Cascade)
+  followers  User[]            @relation("FollowingShops")
   userId     Int
   photos     CoffeeShopPhoto[]
   categories Category[]
